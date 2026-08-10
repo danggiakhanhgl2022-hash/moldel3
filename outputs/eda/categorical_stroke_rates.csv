@@ -1,0 +1,17 @@
+﻿gender,count,strokes,stroke_rate,feature,stroke_rate_percent,ever_married,work_type,Residence_type,smoking_status
+Female,2994,141,0.047094188376753505,gender,4.71,,,,
+Male,2115,108,0.05106382978723404,gender,5.11,,,,
+Other,1,0,0.0,gender,0.0,,,,
+,1757,29,0.016505406943653957,ever_married,1.65,No,,,
+,3353,220,0.0656128839844915,ever_married,6.56,Yes,,,
+,657,33,0.0502283105022831,work_type,5.02,,Govt_job,,
+,22,0,0.0,work_type,0.0,,Never_worked,,
+,2925,149,0.05094017094017094,work_type,5.09,,Private,,
+,819,65,0.07936507936507936,work_type,7.94,,Self-employed,,
+,687,2,0.002911208151382824,work_type,0.29,,children,,
+,2514,114,0.045346062052505964,Residence_type,4.53,,,Rural,
+,2596,135,0.052003081664098616,Residence_type,5.2,,,Urban,
+,1544,47,0.03044041450777202,smoking_status,3.04,,,,Unknown
+,885,70,0.07909604519774012,smoking_status,7.91,,,,formerly smoked
+,1892,90,0.04756871035940803,smoking_status,4.76,,,,never smoked
+,789,42,0.053231939163498096,smoking_status,5.32,,,,smokes
