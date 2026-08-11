@@ -5,6 +5,7 @@ from pathlib import Path
 import matplotlib
 import pandas as pd
 import seaborn as sns
+from sklearn.metrics import average_precision_score, f1_score, recall_score
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -41,6 +42,26 @@ def main() -> None:
     )
     df.groupby("stroke").mean(numeric_only=True).round(3).to_csv(
         OUTPUT_DIR / "numeric_by_stroke.csv", encoding="utf-8-sig"
+    )
+
+    # Imbalance baseline: always predicting the majority class.
+    positive_rate = df["stroke"].mean()
+    y_pred_baseline = pd.Series(0, index=df.index)
+    y_score_baseline = pd.Series(positive_rate, index=df.index)
+    baseline_metrics = pd.Series(
+        {
+            "positive_rate_percent": positive_rate * 100,
+            "negative_rate_percent": (1 - positive_rate) * 100,
+            "majority_accuracy_percent": (1 - positive_rate) * 100,
+            "recall": recall_score(df["stroke"], y_pred_baseline, zero_division=0),
+            "f1": f1_score(df["stroke"], y_pred_baseline, zero_division=0),
+            "auc_pr_average_precision": average_precision_score(
+                df["stroke"], y_score_baseline
+            ),
+        }
+    )
+    baseline_metrics.to_frame("value").to_csv(
+        OUTPUT_DIR / "imbalance_baseline_metrics.csv", encoding="utf-8-sig"
     )
 
     categorical_cols = analysis_df.select_dtypes(include="object").columns
